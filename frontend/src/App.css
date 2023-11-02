@@ -1,0 +1,20 @@
+.brandName{
+    text-decoration: none;
+    color: white;
+}
+
+.quantity-btn{
+    width:25px;
+    height:25px;
+    border-radius:2px;
+    background-color:orange;
+    color: white;
+}
+.quantity-btn:active{
+    transform: scale(0.9);
+}
+.cut-button{
+    height:30px;
+    width:30px;
+}
+

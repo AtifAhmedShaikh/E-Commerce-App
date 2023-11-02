@@ -1,0 +1,20 @@
+.container{
+    width:20%;
+    height:90vh;
+    border-right:1px solid gray;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    overflow-y:scroll;
+    padding: 0 10px;
+}
+.wrapper{
+    display: flex;
+    gap:10px;
+}
+.rangeInput{
+    width: 14rem;
+    position: relative
+}
