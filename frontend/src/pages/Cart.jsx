@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import styles from "../styles/Cart.module.css"
+import { wrapper, container, col } from "../styles/Cart.module.css"
 import CartItem from "../components/cards/CartItem";
 import { Button } from "react-bootstrap"
 import { useNavigate } from "react-router-dom";
@@ -7,8 +7,8 @@ import CartContext from "../context/cart/Context";
 import Header from "../components/Header";
 const OverviewWrapper = () => {
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.col}>
+        <div className={wrapper}>
+            <div className={col}>
                 <span>Items</span>
                 <span>Overview</span>
                 <span>Price</span>
@@ -25,8 +25,8 @@ const Cart = () => {
         <React.Fragment>
             <Header />
             <h4 className="text-center">Your Shopping Cart</h4>
-            <div className={styles.container}>
-                <OverviewWrapper/>
+            <div className={container}>
+                <OverviewWrapper />
                 {cartContext.cart?.map(item => {
                     return <CartItem key={item.id} {...item} />
                 })}

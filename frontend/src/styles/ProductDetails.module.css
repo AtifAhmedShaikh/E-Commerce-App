@@ -36,22 +36,22 @@
 .contentWrapper{
     max-width:35%;
 }
-.configuration{
+.configurationWrapper{
    margin-bottom:20px;
 }
-.configuration ul {
+.configurationWrapper ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
-.configuration ul li{
+.configurationWrapper ul li{
     display: flex;
     justify-content:space-between;
 }
-.configuration ul li span{
+.configurationWrapper ul li span{
     font-size:14px;
     font-weight: bold;
 }
-.configuration ul li span:nth-child(2){
+.configurationWrapper ul li span:nth-child(2){
     font-weight: 500;
 }

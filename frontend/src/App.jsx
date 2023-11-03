@@ -5,6 +5,7 @@ import ProductDetails from './pages/ProductDetails'
 import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
 import ProductsListing from './pages/ProductsListing'
+import WishList from './pages/WishList'
 function App() {
   return (
     <>
@@ -13,6 +14,7 @@ function App() {
           <Route exact path='/products' element={ <ProductsListing/>}/>
           <Route exact path='/products/:id' element={ <ProductDetails/>}/>
           <Route exact path='/cart' element={ <Cart/>}/>
+          <Route exact path='/wishList' element={ <WishList/>}/>
           <Route exact path='/checkout' element={ <Checkout/>}/>
         </Routes>
     </>

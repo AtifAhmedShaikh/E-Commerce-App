@@ -1,16 +1,19 @@
 import React, { useContext, useState } from 'react'
-import {item,descriptionWrapper} from "../../styles/Cart.module.css"
 import PropTypes from 'prop-types'
 import CartContext from '../../context/cart/Context';
 import QuantityButtons from '../QuantityButtons';
-import { handleQuantity } from '../../utils/helper';
-const CartItem = ({ title, description, price, quantity, category, thumbnail, stock,id }) => {
-  const [currentQuantity, setCurrentQuantity] = useState(quantity);
+import {item,descriptionWrapper} from "../../styles/Cart.module.css"
+import { handleQuantity } from '../../utils/handler';
+const CartItem = (props) => {
+  const [cartData, setCartData] = useState({...props});
   const cartContext=useContext(CartContext);
-  const handleRemoveCartProduct=(productId)=>{
+  // handle remove button to remove the product from cart by product ID
+  const handleRemoveButton=(productId)=>{
     const filtered=cartContext.cart.filter(item=>item.id!==productId)//remove the given product from cart
     cartContext.setCart([...filtered]);
   }
+//Destructure the product data 
+const { title, description, price, category,quantity,thumbnail, stock,id }=cartData;
   return (
     <React.Fragment>
       <div className={item}>
@@ -27,14 +30,14 @@ const CartItem = ({ title, description, price, quantity, category, thumbnail, st
         <div>
           <p>${price}</p>
         </div>
-        <QuantityButtons currentQuantity={currentQuantity} handleQuantity={handleQuantity} stock={stock} state={{quantity:quantity}} setState={setCurrentQuantity}/>
+        <QuantityButtons currentQuantity={quantity} stock={stock} handleQuantity={handleQuantity} state={cartData} setState={setCartData}/>
         <div>
           <p>
-            ${price * currentQuantity}
+            ${price * quantity}
           </p>
         </div>
         <div>
-          <button className='cut-button'  onClick={()=>handleRemoveCartProduct(id)}>
+          <button className='cut-button'  onClick={()=>handleRemoveButton(id)}>
             X
           </button>
         </div>

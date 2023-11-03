@@ -23,7 +23,7 @@ function Header() {
         </Navbar.Collapse>
       </Container>
       <div className='d-flex gap-3 fs-5'>
-        <i className='bx bx-heart text-white'></i>
+        <i className='bx bx-heart text-white' onClick={()=>navigate('/wishList')}></i>
         <i className='bx bx-cart-add text-white' onClick={() => navigate('/cart')}></i>
       </div>
     </Navbar>
