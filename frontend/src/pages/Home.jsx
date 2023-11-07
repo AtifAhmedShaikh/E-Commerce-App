@@ -7,7 +7,7 @@ const Home = () => {
     <React.Fragment>
       <Header/>
       <Link to='/products'>
-      <Button variant="primary" size="lg" bsPrefix='btn btn-primary mt-3 ms-5'>
+      <Button variant="primary" className='rounded-1 py-1 px-2 fs-6 mt-3 ms-5' size="lg">
        Continue Shopping
         </Button>
 

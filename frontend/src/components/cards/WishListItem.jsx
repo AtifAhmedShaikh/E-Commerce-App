@@ -1,48 +1,54 @@
-import { useContext, useState } from "react";
-import { handleQuantity } from '../../utils/handler';
-import { item, descriptionWrapper } from "../../styles/Cart.module.css"
+import { useState } from "react";
+import { item, descriptionWrapper } from "../../styles/Cart.module.css";
 import QuantityButtons from "../QuantityButtons";
-import WishListContext from "../../context/wishList/Context";
+import { useDispatch, } from "react-redux";
+import { removeWishListItem } from "../../store/slice/slice";
 const WishListItem = (props) => {
   const [product, setProduct] = useState({ ...props });
-  const wishList=useContext(WishListContext)
-  //handle remove button to remove the specific one product from wish list by product ID
-  const handleRemoveButton=(productId)=>{
-    const filtered=wishList.wishList.filter((item)=>item.id===productId);
-    wishList.setWishList([...filtered])
-  }
+  const dispatch = useDispatch();
+  // handle remove button to remove the specific one product from wish list by product ID
+  const handleRemoveButton = (productId) => {
+    dispatch(removeWishListItem({ id: productId }));
+  };
   // Destructure the product data
-  const { title, description, price, category, quantity, thumbnail, stock ,id} = product;
+  const {
+    title,
+    description,
+    price,
+    category,
+    quantity,
+    mainImage,
+    configuration,
+    _id,
+  } = product;
   return (
     <>
       <div className={item}>
-        <img src={thumbnail} alt="" />
+        <img src={mainImage} alt="" />
         <div className={descriptionWrapper}>
           <h5>{title}</h5>
-          <p className='m-0'>
-            {description}
-          </p>
-          <p>
-            {category}
-          </p>
+          <p className="m-0">{description}</p>
+          <p>{category}</p>
         </div>
+        <p>${price}</p>
+        <QuantityButtons
+          currentQuantity={quantity}
+          stock={configuration.stock}
+          state={product}
+          setState={setProduct}
+        />
+        <p>${price * quantity}</p>
         <div>
-          <p>${price}</p>
-        </div>
-        <QuantityButtons currentQuantity={quantity} stock={stock}  handleQuantity={handleQuantity} state={product} setState={setProduct} />
-        <div>
-          <p>
-            ${price * quantity}
-          </p>
-        </div>
-        <div>
-          <button className='cut-button' onClick={()=>handleRemoveButton(id)}>
+          <button
+            className="cut-button"
+            onClick={() => handleRemoveButton(_id)}
+          >
             X
           </button>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default WishListItem
+export default WishListItem;

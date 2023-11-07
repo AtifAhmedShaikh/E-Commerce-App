@@ -1,16 +1,18 @@
 const express = require("express");
 const router = require("./routes");
-const cors=require("cors");
+const cors = require("cors");
+const connectDataBase = require("./database");
+const { port, appPath } = require("./config");
 const app = express();
-const port = 5000;
-const corsConfig={
-  origin:["http://localhost:5173"],
+const corsConfig = {
+  origin: [appPath],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials:true,
+  credentials: true,
 }
 app.use(cors(corsConfig));
-app.use(express.json())
+app.use(express.json());
 app.use(router);
+connectDataBase();
 app.listen(port, () => {
-  console.log("server running on port ", port);
+  console.log("App server running on some thing one port ");
 });

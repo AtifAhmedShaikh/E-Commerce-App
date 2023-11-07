@@ -1,17 +1,16 @@
+import Spinner from 'react-bootstrap/Spinner';
+import PropTypes from 'prop-types'
 
-import { ColorRing } from "react-loader-spinner"
-const Loader = () => {
+const Loader = ({ size = "" }) => {
   return (
-    <ColorRing
-      visible={true}
-      height="80"
-      width="80"
-      ariaLabel="blocks-loading"
-      wrapperStyle={{}}
-      wrapperClass="blocks-wrapper"
-      colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
-    />
+    <div className='d-flex justify-content-center align-items-center'>
+      <Spinner variant="info" animation="border" role="status" size={size}>
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    </div>
   )
 }
-
+Loader.propTypes = {
+  size: PropTypes.string
+}
 export default Loader

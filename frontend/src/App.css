@@ -17,4 +17,23 @@
     height:30px;
     width:30px;
 }
-
+.range-max,
+.range-min{
+    height:3px;
+    width:85%;
+}
+.stars-container .bx{
+    color: orange !important;
+}
+.search-error-message{
+    font-size:13px;
+}
+label{
+    font-size:14px;
+}
+label.active{
+    color:green !important;
+}
+input:focus{
+    box-shadow:none !important;
+}
