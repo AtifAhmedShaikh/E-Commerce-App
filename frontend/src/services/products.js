@@ -7,6 +7,15 @@ const fetchProducts = async () => {
         return { data: [], error }
     }
 }
+const fetchPopularProducts = async () => {
+    try {
+        const response = await api.get("/api/products");
+        console.log(response.data.products.slice(2,10));
+         return { data: response.data.products.slice(2,10), error: null }
+    } catch (error) {
+        return { data: [], error }
+    }
+}
 const fetchProductById = async (productId) => {
     try {
         const response = await api.get(`/api/products/${productId}`);
@@ -15,6 +24,7 @@ const fetchProductById = async (productId) => {
         return { data: [], error }
     }
 }
+
 const fetchCategories = async () => {
     try {
         const response = await api.get("/api/categories");
@@ -26,5 +36,6 @@ const fetchCategories = async () => {
 export {
     fetchCategories,
     fetchProductById,
-    fetchProducts
+    fetchProducts,
+    fetchPopularProducts
 }
