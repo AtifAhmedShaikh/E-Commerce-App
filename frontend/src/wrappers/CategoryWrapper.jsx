@@ -10,6 +10,7 @@ import {
 } from "../store/slice/slice";
 import { fetchProducts } from "../services/products";
 import Loader from "../components/Loader";
+import { searchCategories } from "../utils/helper";
 
 const CategoryWrapper = () => {
   const categories = useSelector((state) => state.categories);
@@ -17,7 +18,6 @@ const CategoryWrapper = () => {
   const dispatch = useDispatch();
   const [searchResult, setSearchResult] = useState([...categories]);
   const [searchInput, setSearchInput] = useState("");
-
   useEffect(() => setSearchResult(categories), [categories]);
   //update the products in store according active filters of categories
   useEffect(() => {
@@ -25,12 +25,11 @@ const CategoryWrapper = () => {
       const response = await fetchProducts();
       const filteredProducts = await filterProductsByCategories(response.data, activeFilters);
       dispatch(updateProducts({ products: filteredProducts }));
-      console.log("access filters....")
     })();
   }, [activeFilters, dispatch])
-  // handle filters to filter the products by category
+
+  // handle filters to add or remove this category in active filters according status
   const handleFilter = async (status, category) => {
-    //If status is true mean add this category in active filters otherwise remove the filter from active filters
     if (status) {
       dispatch(addActiveFilter({ filter: category }));
     } else {
@@ -38,23 +37,15 @@ const CategoryWrapper = () => {
     }
   };
 
-  // handle the search Input so search or filter the categories
-  const handleSearchInput = (event) => {
-    setSearchInput(event.target.value);
-    const filtered = categories.filter((item) =>
-      item.toLowerCase().includes(searchInput.toLowerCase())
-    );
-    setSearchResult(filtered);
-  };
   return (
     <div className={wrapper}>
       <h5>Categories</h5>
       <Form.Control
         size="sm"
-        className="searchInput"
+        className="searchInput mb-2"
         type="text"
         placeholder="Search Category..."
-        onChange={(e) => handleSearchInput(e)}
+        onChange={(e) => searchCategories(e,setSearchInput,categories,setSearchResult)}
         value={searchInput}
       />
       {searchResult?.map((category, index) => {

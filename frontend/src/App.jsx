@@ -7,13 +7,13 @@ import Checkout from './pages/Checkout'
 import ProductsListing from './pages/ProductsListing'
 import WishList from './pages/WishList'
 import ErrorPage from './pages/ErrorPage'
-import useFetchProducts from './hooks/useFetchProducts'
-import useFetchCategories from './hooks/useFetchCategories'
 import React from 'react'
+import useInitializeCategories from './hooks/useInitializeCategories'
+import useInitializeProducts from './hooks/useInitializeProducts';
 function App() {
-useFetchProducts();
-useFetchCategories();
- return (
+  useInitializeCategories();
+  useInitializeProducts();
+  return (
     <React.Fragment>
       <Routes>
         <Route exact path='/' element={<Home />} />
@@ -22,7 +22,7 @@ useFetchCategories();
         <Route exact path='/cart' element={<Cart />} />
         <Route exact path='/wishList' element={<WishList />} />
         <Route exact path='/checkout' element={<Checkout />} />
-        <Route exact path='*' element={<ErrorPage/>} />
+        <Route exact path='*' element={<ErrorPage />} />
       </Routes>
     </React.Fragment>
   )

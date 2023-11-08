@@ -23,7 +23,7 @@ const FiltersContainer = () => {
         <CategoryWrapper/>
         <SortWrapper/>
         <PriceWrapper/>
-        <Button variant="outline-primary" className='rounded-1 py-1 px-2' style={{fontSize:"14  px"}} onClick={handleClearFilters}>Clear Filters</Button>
+        <Button variant="outline-primary" size="sm" className='rounded-1 py-1 px-2' style={{fontSize:"14  px"}} onClick={handleClearFilters}>Clear Filters</Button>
       </div>
     </React.Fragment>
   )

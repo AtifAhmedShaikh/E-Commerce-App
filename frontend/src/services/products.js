@@ -4,7 +4,7 @@ const fetchProducts = async () => {
         const response = await api.get("/api/products");
          return { data: response.data.products, error: null }
     } catch (error) {
-        return { data: null, error }
+        return { data: [], error }
     }
 }
 const fetchProductById = async (productId) => {
@@ -12,7 +12,7 @@ const fetchProductById = async (productId) => {
         const response = await api.get(`/api/products/${productId}`);
         return { data: response.data, error: null }
     } catch (error) {
-        return { data: null, error }
+        return { data: [], error }
     }
 }
 const fetchCategories = async () => {
@@ -20,11 +20,9 @@ const fetchCategories = async () => {
         const response = await api.get("/api/categories");
         return { data: response.data, error: null };
     } catch (error) {
-        return { data: null, error }
+        return { data:{categories:[]}, error }
     }
 }
-
-
 export {
     fetchCategories,
     fetchProductById,
