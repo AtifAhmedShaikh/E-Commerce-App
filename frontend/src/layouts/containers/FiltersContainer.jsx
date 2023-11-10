@@ -1,14 +1,15 @@
-import React from 'react'
-import {container} from "../styles/SideBar.module.css"
+import React from 'react';
+import {container} from "../../styles/SideBar.module.css"
 import Button from 'react-bootstrap/esm/Button';
-import CategoryWrapper from '../wrappers/CategoryWrapper';
-import SortWrapper from '../wrappers/SortWrapper';
-import PriceWrapper from '../wrappers/PriceWrapper';
+import CategoryWrapper from '../../wrappers/CategoryWrapper';
+import SortWrapper from '../../wrappers/SortWrapper';
+import PriceWrapper from '../../wrappers/PriceWrapper';
 import { useDispatch } from 'react-redux';
-import { resetActiveFilters } from '../store/slice/slice';
+import { resetActiveFilters } from '../../store/slice/slice';
 const FiltersContainer = () => {
   const dispatch=useDispatch();
   const handleClearFilters=()=>{
+    
     dispatch(resetActiveFilters())
   }
   return (

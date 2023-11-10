@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Button } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addCartItem, addWishListItem, removeCartItem, removeWishListItem } from '../store/slice/slice';
+import { addCartItem, addWishListItem, removeCartItem, removeWishListItem, updateOrderDetails } from '../store/slice/slice';
 
 const AddButtons = ({ isAddedInCart, isAddedInWishList, productState, setProductState }) => {
     const dispatch = useDispatch();
@@ -11,11 +11,13 @@ const AddButtons = ({ isAddedInCart, isAddedInWishList, productState, setProduct
     // handle cart button to add product into cart and Ensure doesn't product has already in cart
     const handleAddToCart = () => {
         dispatch(addCartItem({ item: { ...productState } }));
+        dispatch(updateOrderDetails())
         setProductState({ ...productState, isAddedInCart: true });
     };
     // handle remove button to product from cart
     const handleRemoveButton = (productId) => {
         dispatch(removeCartItem({ id: productId }));
+        dispatch(updateOrderDetails());
         setProductState({ ...productState, isAddedInCart: false });
     };
     // handle add to wish list button to add the product into wish list
@@ -34,12 +36,12 @@ const AddButtons = ({ isAddedInCart, isAddedInWishList, productState, setProduct
             <div className="d-flex gap-2 mt-2">
                 {isAddedInCart ? (
                     <Button
-                        variant="warning"
+                        variant="danger"
                         size="sm"
                         className="rounded-1"
                         onClick={() => handleRemoveButton(productState.id)}
                     >
-                        Remove to Cart
+                        Added cart
                     </Button>
                 ) : (
                     <Button
@@ -57,7 +59,7 @@ const AddButtons = ({ isAddedInCart, isAddedInWishList, productState, setProduct
                     className="rounded-1"
                     onClick={() => handleRemoveToWishList()}
                 >
-                    remove to wishList
+                    Added wishList
                 </Button> :
                     <Button
                         variant="primary"

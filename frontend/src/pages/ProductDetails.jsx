@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import QuantityButtons from "../components/QuantityButtons";
-import Header from "../components/Header";
-import ImagesContainer from "../containers/ImagesContainer";
+import Header from "../layouts/Header";
+import ImagesContainer from "../layouts/containers/ImagesContainer";
 import RatingStars from "../components/RatingStars";
 import ProductConfigWrapper from "../wrappers/ProductConfigWrapper";
 import AddButtons from "../components/AddButtons";
 import { fetchProductById } from "../services/products";
-import { container, contentWrapper } from "../styles/ProductDetails.module.css";
+import { contentWrapper } from "../styles/ProductDetails.module.css";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Container from "../layouts/containers/Container";
 //Render complete product detail page component
 const ProductDetails = () => {
   const { id: productId } = useParams(); //Get product Id from page url as productId
@@ -38,7 +39,7 @@ const ProductDetails = () => {
   return (
     <React.Fragment>
       <Header />
-      <div className={container}>
+      <Container className="justify-content-center align-items-start gap-2 py-3 px-0">
         <ImagesContainer thumbnail={mainImage} images={relatedImages} />
         <div className={contentWrapper}>
           <h5>{title}</h5>
@@ -54,7 +55,7 @@ const ProductDetails = () => {
           />
           <AddButtons isAddedInCart={isAddedInCart} isAddedInWishList={isAddedInWishList} productState={productInfo}setProductState={setProductInfo}/>
         </div>
-      </div>
+      </Container>
     </React.Fragment>
   );
 };

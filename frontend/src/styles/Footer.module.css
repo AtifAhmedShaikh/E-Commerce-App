@@ -58,6 +58,9 @@
 {
   text-align:right
 }
+.footer li{
+  list-style: none !important;
+}
 .footer .social-icons a
 {
   width:40px;

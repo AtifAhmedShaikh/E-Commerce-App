@@ -1,10 +1,11 @@
 import React from "react";
-import { wrapper, container, col } from "../styles/Cart.module.css"
+import { wrapper, col } from "../styles/Cart.module.css"
 import CartItem from "../components/cards/CartItem";
 import { Button } from "react-bootstrap"
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
+import Header from "../layouts/Header";
 import { useSelector } from "react-redux";
+import Container from "../layouts/containers/Container";
 const OverviewWrapper = () => {
     return (
         <div className={wrapper}>
@@ -25,7 +26,7 @@ const Cart = () => {
         <React.Fragment>
             <Header />
             <h4 className="text-center">Your Shopping Cart</h4>
-            <div className={container}>
+            <Container className="justify-content-center align-items-center flex-column mb-2">
                 <OverviewWrapper />
                 {cartItems?.map(item => {
                     return <CartItem key={item._id} {...item} />
@@ -34,7 +35,7 @@ const Cart = () => {
                     <Button variant="success" className="rounded-1" onClick={() => navigate('/checkout')}>Checkout</Button>
                     <Button variant="primary" className="rounded-1" onClick={() => navigate('/products')}>Continue Shopping</Button>
                 </div>
-            </div>
+            </Container>
         </React.Fragment>
     )
 }

@@ -7,7 +7,7 @@ function useInitializeProducts() {
     useEffect(() => {
         (async () => {
             const response=await fetchProducts();
-            dispatch(updateProducts({ products: response.data }))
+            dispatch(updateProducts({ products: response.data,loading:true }))
         })();
     }, [dispatch]);
 }

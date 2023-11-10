@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from "../components/Header";
-import Footer from '../components/Footer';
-import HeroContainer from '../containers/HeroContainer';
-import PopularProducts from '../containers/PopularProducts';
+import Header from "../layouts/Header";
+import Footer from "../layouts/Footer";
+import HeroContainer from  "../layouts/containers/HeroContainer"
+import PopularProducts from '../layouts/containers/PopularProducts';
 const Home = () => {
   return (
     <React.Fragment>

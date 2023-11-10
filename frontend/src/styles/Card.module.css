@@ -2,6 +2,10 @@
     width:19rem;
     height:auto;
     margin-bottom:20px;
+    background-color: transparent !important;
+}
+.card:hover{
+    transform: scale(0.97);
 }
 .cardImage{
     width:100%;

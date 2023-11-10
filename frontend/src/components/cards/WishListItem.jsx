@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { item, descriptionWrapper } from "../../styles/Cart.module.css";
+import React,{ useState } from "react";
+import { item } from "../../styles/WishListItem.module.css";
 import QuantityButtons from "../QuantityButtons";
 import { useDispatch, } from "react-redux";
 import { removeWishListItem } from "../../store/slice/slice";
@@ -13,7 +13,6 @@ const WishListItem = (props) => {
   // Destructure the product data
   const {
     title,
-    description,
     price,
     category,
     quantity,
@@ -22,12 +21,11 @@ const WishListItem = (props) => {
     _id,
   } = product;
   return (
-    <>
+    <React.Fragment>
       <div className={item}>
         <img src={mainImage} alt="" />
-        <div className={descriptionWrapper}>
+        <div>
           <h5>{title}</h5>
-          <p className="m-0">{description}</p>
           <p>{category}</p>
         </div>
         <p>${price}</p>
@@ -40,14 +38,14 @@ const WishListItem = (props) => {
         <p>${price * quantity}</p>
         <div>
           <button
-            className="cut-button"
+            className="cut-button bg-transparent text-danger"
             onClick={() => handleRemoveButton(_id)}
           >
             X
           </button>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

@@ -10,6 +10,16 @@ const productController = {
             res.status(500).json({ message: "Internal server Error" })
         }
     },
+    async getPopularProducts(req, res, next) {
+        try {
+            const products = await Product.find();
+            const sorted=await products.sort((p1,p2)=>p2.price-p1.price);
+            res.status(200).json({ products:sorted.slice(0,20) });
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({ message: "Internal server Error" })
+        }
+    },
     async getProductById(req, res, next) {
         try {
             const { id } = req.params;

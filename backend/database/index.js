@@ -1,6 +1,6 @@
 //connect the database mongo DB atlas
 const mongoose=require("mongoose");
-const { connectionString } = require("../config");
+const { connectionString } = require("../config/index");
 const connectDataBase=async()=>{
     try{
         const connection=await mongoose.connect(connectionString);

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { imageWrapper, main, slider } from "../styles/ProductDetails.module.css"
+import { imageWrapper, main, slider } from "../../styles/ProductDetails.module.css"
 import PropTypes from 'prop-types'
 const ImagesContainer = ({ thumbnail, images }) => {
     const thumbnailImage = useRef(null);

@@ -1,9 +1,16 @@
 export const reducers = {
+  updateAuth:(state,action)=>{
+    state.auth={...action.payload.auth}
+  },
+  resetAuth:(state)=>{
+    state.auth={status:false,user:null}
+  },
   initializeProducts:()=>{
     //call the API
   },
   updateProducts: (state, action) => {
-    state.products = [...action.payload.products]
+    state.products.data = [...action.payload.products]
+    state.products.loading = action.payload.loading
   },
   updateCart: (state, action) => {
     state.cart = [...action.payload.cart]
@@ -43,4 +50,13 @@ export const reducers = {
   resetActiveFilters: (state) => {
     state.activeFilters = [];
   },
+  updateOrderDetails:(state)=>{
+    if(state.cart.length<1)return;
+    const totalProductQuantity = state.cart.map(item=>item.quantity).reduce((total,curr)=>total+curr);
+    const subTotal = state.cart.map((item) => item.price * item.quantity).reduce((acc, curr) => acc + curr); //SubTotal of cart
+    const salesTax = Math.round((5 / 100) * subTotal); //5% percentage of sales Tax
+    const shippingCharges = Math.round((15 / 100) * subTotal); //15% percentage of shipping
+    const grandTotal = Math.round(subTotal + salesTax + shippingCharges); //Grand Total
+    state.orderDetails={totalProductQuantity,subTotal,salesTax,shippingCharges,grandTotal};
+  }
 }

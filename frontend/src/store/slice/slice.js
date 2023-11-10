@@ -1,9 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { reducers } from "../reducers/reducers";
 const initialState = {
-  products: [
-    //store all products for product listing page
-  ],
+  auth:{
+    status:false,
+    user:null
+  },
+  products: {
+    loading:false,// for API call product loading
+    data:[
+      //store all products for product listing page
+    ]
+  },
   cart: [
     // store user shopping cart items
   ],
@@ -16,6 +23,9 @@ const initialState = {
   activeFilters: [
     // active  filters of category to filtering products 
   ],
+  orderDetails: {
+    // active  filters of category to filtering products 
+  }
 };
 const storeSlice = createSlice({
   name: "E-store",
@@ -23,6 +33,8 @@ const storeSlice = createSlice({
   reducers: reducers,
 });
 export const {
+  updateAuth,
+  resetAuth,
   initializeProducts,
   updateProducts,
   updateCart,
@@ -34,5 +46,6 @@ export const {
   addActiveFilter,
   removeActiveFilter,
   resetActiveFilters,
+  updateOrderDetails
 } = storeSlice.actions;
 export default storeSlice.reducer;

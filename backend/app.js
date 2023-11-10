@@ -1,6 +1,7 @@
 const express = require("express");
 const router = require("./routes");
 const cors = require("cors");
+const bodyParser=require("body-parser");
 const connectDataBase = require("./database");
 const { port, appPath } = require("./config");
 const app = express();
@@ -11,6 +12,7 @@ const corsConfig = {
 }
 app.use(cors(corsConfig));
 app.use(express.json());
+app.use(bodyParser.json());
 app.use(router);
 connectDataBase();
 app.listen(port, () => {

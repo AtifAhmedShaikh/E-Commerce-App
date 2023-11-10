@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/esm/Button';
-import { fetchPopularProducts } from '../services/products';
-import ProductCard from "../components/cards/ProductCard"
+import  {fetchPopularProducts } from "../../services/products"
+import ProductCard from "../../components/cards/ProductCard"
 import { useNavigate } from 'react-router-dom';
-import Loader from "../components/Loader";
+import Loader from "../../components/Loader";
 const PopularProducts = () => {
     const navigate=useNavigate();
     const [popularProducts, setPopularProducts] = useState([]);
@@ -19,7 +19,7 @@ const PopularProducts = () => {
         <React.Fragment>
             <h4 className='text-center text-success mt-3'>Popular Products </h4>
             <div className='container-fluid justify-content-around d-flex flex-wrap py-3 px-2 gap-3'>
-                {loading&&<Loader/>}
+                {loading&&<Loader fontSize="16px" label="loading popular products..."/>}
                 {
                     popularProducts.map(product => {
                         return <ProductCard key={product._id} {...product} />
