@@ -15,21 +15,21 @@ const Footer = () => {
           </p>
         </div>
         <div className="w-1/3 flex flex-col items-start">
-          <h4 className="text-left mb-4 text-2xl">Project Depecendiens</h4>
+          <h4 className="text-left mb-4 text-2xl">Project Dependencies</h4>
           <ul>
-            <li className="mb-1">React</li>
-            <li className="mb-1">React</li>
-            <li className="mb-1">React</li>
-            <li className="mb-1">React</li>
+            <li className="mb-1">react-dom</li>
+            <li className="mb-1">react-router-dom</li>
+            <li className="mb-1">redux redux/Toolkit</li>
+            <li className="mb-1">axios</li>
           </ul>
         </div>
         <div className="w-1/3 flex flex-col items-start">
           <h4 className="text-left mb-4 text-2xl">Project Technologies</h4>
           <ul>
             <li className="mb-1">React</li>
-            <li className="mb-1">React</li>
-            <li className="mb-1">React</li>
-            <li className="mb-1">React</li>
+            <li className="mb-1">Nodejs</li>
+            <li className="mb-1">Express</li>
+            <li className="mb-1">Mongo Db Atlas/campus</li>
           </ul>
 
         </div>

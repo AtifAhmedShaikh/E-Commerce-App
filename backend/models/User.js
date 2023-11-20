@@ -18,6 +18,14 @@ const userSchema=new Schema({
         type:String,
         required:true,
     },
+    ordersTotalAmount:{
+        type:Number,
+        required:true,
+    },
+    orders:{
+        type:Number,
+        required:true,
+    },
 },
 {timestamps:true}
 );

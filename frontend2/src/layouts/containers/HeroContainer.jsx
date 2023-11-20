@@ -1,6 +1,9 @@
 import React from 'react'
+import Button from '../../components/Button'
+import { useNavigate } from 'react-router-dom'
 
 const HeroContainer = () => {
+    const navigate=useNavigate();
   return (
         <React.Fragment>
             <div className='flex bg-slate-700 h-[92vh] justify-start items-center px-5'>
@@ -11,12 +14,8 @@ const HeroContainer = () => {
                     <p className='text-gray-100 my-2'>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam corporis magnam vero non perferendis sed, possimus expedita, magni facilis corrupti illum nostrum, minima vitae reprehenderit adipisci eos tenetur. Asperiores, eaque!
                     </p>
-                    <button className='bg-orange-700 text-lg px-4 py-1 text-gray-100 rounded-sm '>
-                        Explore
-                    </button>
-                    <button className='bg-green-700 text-lg px-4 py-1 text-gray-100 rounded-sm ml-3'>
-                        See Items
-                    </button>
+                    <Button className="bg-orange-500 text-lg px-4 py-1 text-gray-100 rounded-md " onClick={()=>navigate('/products')}>Explore </Button>
+                    <Button className="bg-green-500 text-lg px-4 py-1 text-gray-100 rounded-md ml-3 " onClick={()=>navigate('/products')}>See Items </Button>
                 </div>
             </div>
         </React.Fragment>

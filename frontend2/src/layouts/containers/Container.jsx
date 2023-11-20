@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 const Container = ({children,className}) => {
   return (
-    <div className={`w-full ${className}`}>{children}</div>
+    <div className={`w-full min-h-[65vh] ${className}`}>{children}</div>
   )
 }
 Container.propTypes={

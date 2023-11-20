@@ -1,6 +1,5 @@
 const User = require("../models/User");
 const refreshTokenSchema = require("../models/Token")
-const JWTService = require("../utils/jwt");
 const { hashedPassword, comparePassword } = require("../utils");
 const authController = {
     async register(req, res, next) {
@@ -8,7 +7,7 @@ const authController = {
         try {
             const isExistUser = await User.findOne({ username });
             if (isExistUser) {
-                return res.status(401).json({ message: "this username is not available !" })
+                return res.status(401).json({ message: "username is not available !" })
             }
             const hashed = await hashedPassword(password);
             const user = new User({
@@ -20,14 +19,14 @@ const authController = {
             const newUser = await user.save();
             res.status(201).json({ user: newUser });
         } catch (error) {
-            console.log(error)
+            console.log(error);
             res.status(500).json({ message: "Internal server Error !" })
         }
     },
     async login(req, res, next) {
         try {
             const { username, password } = req.body;
-            const user = await User.findOne({ username })
+            const user = await User.findOne({ username }).select("-password")
             if (!user) {
                 return res.status(401).json({ message: "Invalid username or password " })
             }

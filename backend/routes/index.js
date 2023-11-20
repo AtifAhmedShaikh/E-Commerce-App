@@ -3,6 +3,7 @@ const productController = require("../controller/productController");
 const authController = require("../controller/auth");
 const { hashedPassword, comparePassword } = require("../utils");
 const User = require("../models/User");
+const Product = require("../models/Product");
 const router = express.Router();
 //Request for home page of App
 router.get("/", (req, res) => {
@@ -24,5 +25,6 @@ router.get("/api/categories",productController.getCategories);
 router.post("/api/auth/register",authController.register);
 //Request user Login
 router.post("/api/auth/login",authController.login);
+
 
 module.exports = router;

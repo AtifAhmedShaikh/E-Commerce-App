@@ -1,25 +1,32 @@
-const ProductCard = () => {
+import { useNavigate } from "react-router-dom";
+import RatingStars from "../../wrappers/RatingStars";
+import Button from "../Button";
+import PropTypes from "prop-types";
+const ProductCard = ({ title, description, price, mainImage,_id }) => {
+  const navigate = useNavigate();
   return (
-        <div className="w-[23%] flex flex-col h-[20rem] px-2 hover:scale-95">
-      <img
-        className="w-100 h-[75%] rounded-md"
-        src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGJveXxlbnwwfHwwfHx8MA%3D%3D"
-        alt=""
-      />
-      <h4 className="text-gray-500 font-light">product category</h4>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur 
-      </p>
+    <div className="w-1/4 flex flex-col h-auto px-2 hover:scale-95 mb-3 sm:w/1/2">
+      <img className="w-100 h-[14rem] rounded-md" src={mainImage} alt="" />
+      <h4 className="text-gray-500 font-light">{title}</h4>
+      <p className="text-sm font-semibold">{description}</p>
       <div className="flex justify-between px-2">
-        <div className="star">
-          <i className="bx bx-star"></i>
-          <i className="bx bx-star"></i>
-          <i className="bx bx-star"></i>
-        </div>
-        <span>$900</span>
+        <RatingStars />
+        <span>${price}</span>
       </div>
+      <Button
+        className="bg-blue-700 text-gray-100 rounded-md w-fit px-2 py-1"
+        onClick={() => navigate(`/products/${_id}`)}
+      >
+        But Now
+      </Button>
     </div>
   );
 };
-
+ProductCard.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  price: PropTypes.number,
+  mainImage: PropTypes.string,
+  _id: PropTypes.string,
+};
 export default ProductCard;
