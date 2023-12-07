@@ -5,10 +5,10 @@ import PropTypes from "prop-types";
 const ProductCard = ({ title, description, price, mainImage,_id }) => {
   const navigate = useNavigate();
   return (
-    <div className="w-1/4 flex flex-col h-auto px-2 hover:scale-95 mb-3 sm:w/1/2">
-      <img className="w-100 h-[14rem] rounded-md" src={mainImage} alt="" />
+    <div className="w-1/4 flex flex-col h-auto  hover:scale-95 mb-3 sm:w/1/2 border py-1 px-2">
+      <img className="w-100 h-[14rem] " src={mainImage} alt="" />
       <h4 className="text-gray-500 font-light">{title}</h4>
-      <p className="text-sm font-semibold">{description}</p>
+      <p className="text-sm font-normal">{description}</p>
       <div className="flex justify-between px-2">
         <RatingStars />
         <span>${price}</span>

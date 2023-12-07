@@ -11,13 +11,13 @@ import ProductsDetails from "./pages/ProductsDetails";
 import AdminLogin from "./pages/AdminLogin";
 import ErrorPage from "./pages/ErrorPage";
 import UpdateProducts from "./pages/UpdateProducts";
-// import useBootUp from "./hooks/useBootUp";
-// import Loader from "./components/Loader";
+import useBootUp from "./hooks/useBootUp";
+import Loader from "./components/Loader";
 
 function App() {
-  // const [error, loading] = useBootUp();
-  // if (!loading) return <Loader />;
-  // if (error) return <div>some thing went wrong</div>;
+  const [error, loading] = useBootUp();
+  if (!loading) return <Loader />;
+  if (error) return <div>some thing went wrong</div>;
   return (
     <React.Fragment>
       <Routes>

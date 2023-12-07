@@ -6,6 +6,7 @@ import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
 import Loader from "../components/Loader"
 import { useSelector } from "react-redux";
+import FiltersBar from "../layouts/TopBars/FiltersBar";
 const ProductListing = () => {
   const products=useSelector((state)=>state.products.data);
   const loading=useSelector((state)=>state.products.loading);
@@ -13,6 +14,7 @@ const ProductListing = () => {
     <React.Fragment>
       <Header />
       <Heading label="Product Listing"/>
+      <FiltersBar/>
       <Container className="flex justify-around items-center flex-wrap gap-2 mb-5 py-5">
         {!loading&&<Loader/>}
         {products.map(product=>{

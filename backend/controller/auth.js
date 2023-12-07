@@ -40,7 +40,7 @@ const authController = {
         }
     },
     async logout(req, res, next) {
-        //    delete refresh token from Databse
+        //    delete refresh token from Database
         const { refreshToken } = req.cookies;
         try {
             await refreshTokenSchema.deleteOne({ token: refreshToken });
@@ -56,7 +56,7 @@ const authController = {
             .json({
                 user: null,
                 auth: false,
-                message: "You have suuccessfully Logout ",
+                message: "You have successfully Logout ",
             });
     },
     async getUsers(req, res) {

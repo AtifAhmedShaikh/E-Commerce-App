@@ -35,7 +35,9 @@ export const reducers = {
     },
     // remove given category filter from active filters
     removeActiveFilter: (state, action) => {
+      if(!state.activeFilters.includes(action.payload.filter))return;
       const updatedFilters = state.activeFilters.filter(item => item !== action.payload.filter)
+      console.log(updatedFilters,action.payload.filter);
       state.activeFilters = [...updatedFilters];
     },
     // reset all active filters, clean up active filters

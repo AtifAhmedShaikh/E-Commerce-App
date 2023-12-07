@@ -1,5 +1,5 @@
 const express = require("express");
-const productController = require("../controller/productController");
+const productController = require("../controller/product");
 const authController = require("../controller/auth");
 const { hashedPassword, comparePassword } = require("../utils");
 const User = require("../models/User");
@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 });
 //Request for user register
 router.get("/api/popularProducts", productController.getPopularProducts);
-// Request for user register
+//Request for user register
 router.get("/api/products", productController.getAllProducts);
 //Get the all users
 router.get("/api/users", authController.getUsers);

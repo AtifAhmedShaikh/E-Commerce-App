@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 const ProductConfig = ({ configuration }) => {
   return (
     <React.Fragment>
-        <div className="my-2 ml-2">
+        <div className="my-2 ml-2 max-w-md">
       {Object.keys(configuration).map((item) => {
         return (
           <div
